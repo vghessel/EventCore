@@ -1,9 +1,29 @@
 package com.eventcore.domain;
 
+import com.eventcore.dto.EventDTO;
+import jakarta.persistence.*;
+import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.util.Date;
+
+@Data
+@Entity
+@Table(name = "events")
 public class Event {
-    private String eventId;
-    private String eventType;
-    private String timestamp;
-    private String userId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String type;
+
+    @CreationTimestamp
+    private Date timestamp;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     private String ipAddress;
 }

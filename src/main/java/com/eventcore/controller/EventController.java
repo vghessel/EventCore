@@ -1,6 +1,7 @@
 package com.eventcore.controller;
 
 import com.eventcore.domain.Event;
+import com.eventcore.dto.EventDTO;
 import com.eventcore.service.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class EventController {
     private final EventService eventService;
 
     @PostMapping
-    public ResponseEntity<Event> receiveEvent(@RequestBody Event event) {
-        return ResponseEntity.ok(eventService.manageEvent(event));
+    public ResponseEntity<Event> receiveEvent(@RequestBody EventDTO eventDTO) {
+        return ResponseEntity.ok(eventService.manageEvent(eventDTO));
     }
 }
