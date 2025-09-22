@@ -4,8 +4,11 @@ import com.eventcore.domain.Event;
 import com.eventcore.dto.EventDTO;
 import com.eventcore.service.EventService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -14,8 +17,14 @@ public class EventController {
 
     private final EventService eventService;
 
+    @GetMapping
+    public List<Event> getAllEvents() {
+        return eventService.getAllEVents();
+    }
+
     @PostMapping
-    public ResponseEntity<Event> receiveEvent(@RequestBody EventDTO eventDTO) {
-        return ResponseEntity.ok(eventService.manageEvent(eventDTO));
+    @ResponseStatus(HttpStatus.CREATED)
+    public Event receiveEvent(@RequestBody EventDTO eventDTO) {
+        return eventService.manageEvent(eventDTO);
     }
 }
