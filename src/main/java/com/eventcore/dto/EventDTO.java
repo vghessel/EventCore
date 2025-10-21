@@ -1,4 +1,6 @@
 package com.eventcore.dto;
 
-public record EventDTO(String type, Long userId, String ipAddress) {
+import java.util.UUID;
+
+public record EventDTO(String type, UUID userId, String ipAddress) {
 }

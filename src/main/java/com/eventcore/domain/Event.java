@@ -1,6 +1,5 @@
 package com.eventcore.domain;
 
-import com.eventcore.dto.EventDTO;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -13,13 +12,14 @@ import java.util.Date;
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "event_id")
+    private Long eventId;
 
     private String type;
 
     @CreationTimestamp
-    private Date timestamp;
+    private Date creationTimestamp;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

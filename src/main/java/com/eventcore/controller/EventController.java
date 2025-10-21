@@ -5,7 +5,6 @@ import com.eventcore.dto.EventDTO;
 import com.eventcore.service.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
